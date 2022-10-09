@@ -1,5 +1,0 @@
-
-resource "openstack_compute_keypair_v2" "keypair" {
-  name       = "project_key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC7jmg6tOyhojfd43GukPAkz19MMb9vTKk9/P1Bvl4PsWZnLltsy+haYvEQSQTSebvSkiCV1T6Ajsr2h8MmGqukUy+ZXsfs2OmFKg0aCllVMgQT7uPQr59Z/Y2pNA2/Suuwq8+UGgfVviyJ7G9Y01Anm3RTELzaMWr6D4QwsmyZEvDSYNUlgZxYAfCZIe6XB5iF9NGdxZKbx7kE49jSRD5dCVVvJxmxp+nFwzk2A/w3qSo8xoksjTKPUX6P1ZSR0CgGVq+taKzIoDDUNuuIAWSP3dcwr/VYrIHpUVBixc6Wq5jVMP8Cz5Z6qxdlotqmDJsgv2hT4fYfXunLWVtMwPnz root@controller"
-}
