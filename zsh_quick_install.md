@@ -103,7 +103,6 @@ plugins=(
         git
         zsh-autosuggestions
         zsh-syntax-highlighting
-        autojump
 )
 
 
@@ -134,11 +133,16 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+KUBECONFIG=/etc/kubernetes/admin.conf
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+alias k='kubectl'
 
 ```
 
 
-플러그인: Auto Suggestions,Syntax Highlighting, Autojump
+플러그인: Auto Suggestions, Syntax Highlighting
  
 `source ~/.zshrc`: 변경된 사항 적용
 
