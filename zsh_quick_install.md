@@ -133,6 +133,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 KUBECONFIG=/etc/kubernetes/admin.conf
 alias ll='ls -alF'
 alias la='ls -A'
@@ -143,6 +144,10 @@ alias k='kubectl'
 
 
 플러그인: Auto Suggestions, Syntax Highlighting
+ 
+마지막 라인에 kubeconfig 설정과 alias 설정 추가
+
+Cation: zsh은 대괄호를 쓸 때 backslash를 써야 한다.
  
 `source ~/.zshrc`: 변경된 사항 적용
 
