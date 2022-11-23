@@ -97,7 +97,7 @@ alertmanager:
   ## Defining configMapOverrideName will cause templates/alertmanager-configmap.yaml
   ## to NOT generate a ConfigMap resource
   ##
-  configMapOverrideName: "notifier-config"
+  configMapOverrideName: ""
 
   ## The name of a secret in the same kubernetes namespace which contains the Alertmanager config
   ## Defining configFromSecret will cause templates/alertmanager-configmap.yaml
@@ -1577,22 +1577,21 @@ pushgateway:
 ## alertmanager ConfigMap entries
 ##
 alertmanagerFiles:
-  alertmanager.yml: |
-    global: {}
-      slack_api_url: 'https://hooks.slack.com/services/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'
-
-    receivers:
-      - name: slack-notifier
-        slack_configs:
-         - channel: '#monitoring'
-           send_resolved: true
-
+  alertmanager.yml: 
+    global:
+      slack_api_url: 'https://hooks.slack.com/services/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'
     route:
+      receiver: slack-notifier
       group_wait: 10s
-      group_interval: 5m
-      receiver: default-receiver
-      repeat_interval: 3h
-
+      group_interval: 1m
+      repeat_interval: 2m
+    receivers:
+    - name: slack-notifier
+      slack_configs:
+      - send_resolved: true
+        channel: '#k8s-monitoring'
+        api_url: "https://hooks.slack.com/services/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"
+        text: 'Node has been down for more than 1 minutes.'
 ## Prometheus server ConfigMap entries for rule files (allow prometheus labels interpolation)
 ruleFiles: {}
 
@@ -1602,7 +1601,7 @@ serverFiles:
 
   ## Alerts configuration
   ## Ref: https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/
-  alerting_rules.yml: |
+  alerting_rules.yml: 
     groups:
       - name: AllInstances
         rules:
@@ -1612,7 +1611,7 @@ serverFiles:
             labels:
               severity: 'critical'
             annotations:
-              description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 5 minutes.'
+              description: '{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 1 minutes.'
               summary: 'Instance {{ $labels.instance }} down'
    # DEPRECATED DEFAULT VALUE, unless explicitly naming your files, please use alerting_rules.yml
   alerts: {}
